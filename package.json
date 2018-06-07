@@ -1,0 +1,26 @@
+{
+  "name": "winston-cloudant",
+  "version": "0.1.0",
+  "description": "A simple Winston transport for IBM Cloudant NoSQL Db",
+  "main": "winston-cloudant.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Håkan Öström <hakan.ostrom@gmail.com> (http://hakanostrom.se)",
+  "license": "MIT",
+  "keywords": [
+    "logging",
+    "tools",
+    "winston",
+    "IBM",
+    "cloudant",
+    "bluemix"
+  ],
+  "dependencies": {
+    "@cloudant/cloudant": "^2.2.0",
+    "winston-transport": "^4.1.0"
+  },
+  "devDependencies": {
+    "winston": "^2.4.2"
+  }
+}
