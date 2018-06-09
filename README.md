@@ -30,7 +30,7 @@ The Cloudant NoSQL DB transport takes the following options:
     logstash    : Write logs in logstash format
 
 ### url
-The access url for a Cloudant DB instance can be retreived from IBM Cloud portal under _Service credentials_. The url option, if provided, is equivalent to and used in precedence of username/password/host.
+The access url for a Cloudant DB instance can be retreived from IBM Cloud portal under _Service credentials_. The url option is equivalent to and, if provided, used in precedence of username/password/host.
 
 ### username
 The username for a Cloudant DB instance can be retreived from IBM Cloud portal under _Service credentials_.
