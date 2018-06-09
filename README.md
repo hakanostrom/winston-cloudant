@@ -13,7 +13,7 @@ The winston-cloudant module allows you to log your winston messages to IBM's Clo
 ## Installation
 
 ``` bash
-  $ npm install winston-cloudant
+  $ npm install --save winston-cloudant
 ```
 
 ## Usage
@@ -25,13 +25,14 @@ The Cloudant NoSQL DB transport takes the following options:
 
     url         : Access url including user and password
     db          : Name of the databasename to put logs in
-    logstash    : True or false to indicate logging in logstash format
+    logstash    : Write logs in logstash format
 
 ### url
 
 ### db
 
 ### logstash
+True or false to indicate logging in logstash format
 
 # Author
 
