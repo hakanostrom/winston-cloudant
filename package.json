@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hakanostrom/winston-cloudant.git"
+  },
   "author": "Håkan Öström <hakan.ostrom@gmail.com> (http://hakanostrom.se)",
   "license": "MIT",
   "keywords": [
