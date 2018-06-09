@@ -1,0 +1,8 @@
+exports = module.exports = {
+    url: 'https://...',
+    username: '...',
+    password: '...',
+    host: '...',
+    db: 'example-database',
+    logstash: false
+ };
