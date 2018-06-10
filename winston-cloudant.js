@@ -9,23 +9,26 @@ module.exports = class CloudantTransport extends Transport {
     constructor(opts) {
         super(opts);
 
-        this.cloudant = Cloudant({ url: opts.url });
-
-        // Create database to be sure it exists
-        this.cloudant.db.create(opts.db);
+        // Instantiate using url OR username/password/host
+        this.cloudant = Cloudant({
+            url: opts.url || 'https://' + opts.username + ':' + opts.password + '@' + opts.host
+        });
 
         // Default database name if none provided
         opts.db = opts.db || 'winston-cloudant';
 
+        // Create database to be sure it exists
+        this.cloudant.db.create(opts.db);
+
         this.db = this.cloudant.use(opts.db);
 
-        // Formatting for Logstash
-        this.logstash = opts.logstash;
+        // Formatting for Logstash (force to be true/false)
+        this.logstash = !!opts.logstash;
     }
 
     log(level, msg, meta, callback) {
         setImmediate(() => {
-            this.emit('logged', msg + '-tut');
+            this.emit('logged', msg);
         });
 
         var timestamp = new Date();
@@ -44,7 +47,7 @@ module.exports = class CloudantTransport extends Transport {
 
         this.db.insert({
             resource: 'log',
-            logstash: !!this.logstash,
+            logstash: this.logstash,
             params: meta
         }, function (err, data) {
             callback();
