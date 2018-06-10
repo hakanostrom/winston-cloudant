@@ -63,4 +63,4 @@ typings/
 # Visual Studio Code
 .vscode/*
 
-#examples/options.js
+examples/options.js
