@@ -48,6 +48,7 @@ module.exports = class CloudantTransport extends Transport {
         this.db.insert({
             resource: 'log',
             logstash: this.logstash,
+            time: timestamp,
             params: meta
         }, function (err, data) {
             callback();
