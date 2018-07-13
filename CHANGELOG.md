@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.1.2 / 2018-07-13
+ - Update readme
+
 ## 1.1.1 / 2018-07-13
  - Adding changelog
  - Update readme
