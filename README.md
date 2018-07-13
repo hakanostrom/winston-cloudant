@@ -2,9 +2,10 @@
 
 The winston-cloudant module allows you to log your winston messages to IBM's Cloudant NoSQL DB.
 
-    var WinstonCloudant = require('winston-cloudant');
+    const winston = require('winston');
+    const WinstonCloudant = require('winston-cloudant');
     
-    winston.add(WinstonCloudant, {
+    winston.add(new WinstonCloudant, {
         url : '...',
         db : '...'
     });
