@@ -47,6 +47,10 @@ The name of the database where logs should be writen. Default if none priveded i
 ### logstash
 True or false indicating logs to be writen in logstash format. Default is _false_.
 
+## Result
+
+In your Cloudant instance a new database will be created with the specified name containing a new document for each log. The timestamp will be in the root level of the document and thus aid in sorting. The child node _params_ will vary in formatting depending on the _logstash_ flag but always contain the log itself along with some metadata. 
+
 # Author
 
 Written by [Håkan Öström](http://www.hakanostrom.se)
