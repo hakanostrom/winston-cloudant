@@ -5,10 +5,15 @@ The winston-cloudant module allows you to log your winston messages to IBM's Clo
     const winston = require('winston');
     const WinstonCloudant = require('winston-cloudant');
     
-    winston.add(new WinstonCloudant, {
-        url : '...',
-        db : '...'
+    const logger = winston.createLogger({
+        transports: [
+            new cloudantTransport({
+                url: '...',
+                db: '...'
+            })
+        ]
     });
+    
 
 ## Installation
 
@@ -20,6 +25,8 @@ The winston-cloudant module allows you to log your winston messages to IBM's Clo
 
 Winston-cloudant is just like any other transport for winston. When adding it to winston, it takes some options so that
 it knows where to log to Cloudant.
+
+Note that the latest version of this transport is made for winston 3.0 and up. If using older version of winston, please use older version (1.x) of this library.
 
 The Cloudant NoSQL DB transport takes the following options:
 
