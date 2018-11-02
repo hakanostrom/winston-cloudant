@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git://github.com/hakanostrom/winston-cloudant.git"
   },
-  "author": "Håkan Öström <hakan.ostrom@gmail.com> (http://hakanostrom.se)",
+  "author": "Håkan Öström <hakan.ostrom@gmail.com> (http://www.hakanostrom.se)",
   "license": "MIT",
   "keywords": [
     "logging",
@@ -21,10 +21,10 @@
     "bluemix"
   ],
   "dependencies": {
-    "@cloudant/cloudant": "^2.2.0",
-    "winston-transport": "^4.1.0"
+    "@cloudant/cloudant": "^2.4.0",
+    "winston-transport": "^4.2.0"
   },
   "devDependencies": {
-    "winston": "^2.4.2"
+    "winston": "^3.1.0"
   }
 }
