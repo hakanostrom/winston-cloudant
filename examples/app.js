@@ -22,6 +22,6 @@ logger.info('Hello again distributed logs');
 // log with metadata (warning-level)
 logger.warn('With some metadata', {
     tag: 'cloud',
-    UserID: 'olle',
+    UserID: 'Olle',
     Question: 'Lorem ipsum dolor'
 });
