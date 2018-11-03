@@ -5,8 +5,14 @@ const Cloudant = require('@cloudant/cloudant');
 // of the base functionality and `.exceptions.handle()`.
 //
 module.exports = class CloudantTransport extends Transport {
+
     constructor(opts) {
         super(opts);
+
+        if (!opts.url && !(opts.username && opts.password && opts.host))
+            return console.log('Insufficient database credentials provided');
+
+        this.goOn = true;
 
         // Instantiate using url OR username/password/host
         this.cloudant = Cloudant({
@@ -14,7 +20,7 @@ module.exports = class CloudantTransport extends Transport {
         });
 
         // Default database name if none provided
-        opts.db = opts.db || 'winston-cloudant2';
+        opts.db = opts.db || 'winston-cloudant';
 
         // Create database to be sure it exists
         this.cloudant.db.create(opts.db);
@@ -29,7 +35,10 @@ module.exports = class CloudantTransport extends Transport {
         setImmediate(() => {
             this.emit('logged', info);
         });
-        
+
+        if(!this.goOn)
+            return;
+
         var meta = {};
 
         info.timestamp = new Date();
@@ -54,8 +63,11 @@ module.exports = class CloudantTransport extends Transport {
             time: info.timestamp,
             params: meta
         }, function (err, data) {
+
+            if (err)
+                console.log(err + "");
+
             callback();
         });
-
     }
 };
