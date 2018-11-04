@@ -3,6 +3,7 @@ exports = module.exports = {
     username: '...',
     password: '...',
     host: '...',
+    iamApiKey: '...',
     db: 'example-database',
     logstash: false
  };

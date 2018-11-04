@@ -34,6 +34,7 @@ The Cloudant NoSQL DB transport takes the following options:
     username    : Username for the Cloudant DB instance
     password    : Password for the Cloudant DB instance
     host        : Host for the Cloudant DB instance
+    iamApiKey   : IAM session cookie
     db          : Name of the databasename to put logs in
     logstash    : Write logs in logstash format
 
@@ -48,6 +49,9 @@ The password for a Cloudant DB instance can be retreived from IBM Cloud portal u
 
 ### host
 The host for a Cloudant DB instance can be retreived from IBM Cloud portal under _Service credentials_.
+
+### iamApiKey
+Used in conjection with url (without credentials) for token based login to iam-based Cloudant services instead of basic auth (username and password).
 
 ### db
 The name of the database where logs should be writen. Default if none priveded is _winston-cloudant_.
