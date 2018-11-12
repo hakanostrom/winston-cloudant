@@ -17,7 +17,7 @@ module.exports = class CloudantTransport extends Transport {
         // Instantiate using url OR username/password/host
         this.cloudant = Cloudant({
             url: opts.url || 'https://' + opts.username + ':' + opts.password + '@' + opts.host,
-            plugins: opts.iamApiKey && { iamauth: { iamApiKey: opts.iamApiKey } }
+            plugins: { iamauth: { iamApiKey: opts.iamApiKey || ''} }
         });
 
         // Default database name if none provided
