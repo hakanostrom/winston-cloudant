@@ -32,8 +32,6 @@ module.exports = class CloudantTransport extends Transport {
         this.logstash = true;
         if (opts.logstash == false || opts.logstash == 'false')
             this.logstash = false;
-
-        console.log('this.logstash: ' + this.logstash);
     }
 
     log(info, callback) {
