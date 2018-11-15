@@ -17,7 +17,7 @@ module.exports = class CloudantTransport extends Transport {
         // Instantiate using url OR username/password/host
         this.cloudant = Cloudant({
             url: opts.url || 'https://' + opts.username + ':' + opts.password + '@' + opts.host,
-            plugins: { iamauth: { iamApiKey: opts.iamApiKey || ''} }
+            plugins: { iamauth: { iamApiKey: opts.iamApiKey || '' } }
         });
 
         // Default database name if none provided
@@ -28,8 +28,12 @@ module.exports = class CloudantTransport extends Transport {
 
         this.db = this.cloudant.use(opts.db);
 
-        // Formatting for Logstash (force to be true/false)
-        this.logstash = !!opts.logstash;
+        // Formatting for Logstash
+        this.logstash = true;
+        if (opts.logstash == false || opts.logstash == 'false')
+            this.logstash = false;
+
+        console.log('this.logstash: ' + this.logstash);
     }
 
     log(info, callback) {
@@ -37,7 +41,7 @@ module.exports = class CloudantTransport extends Transport {
             this.emit('logged', info);
         });
 
-        if(!this.goOn)
+        if (!this.goOn)
             return;
 
         var meta = {};
