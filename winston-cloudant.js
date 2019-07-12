@@ -12,19 +12,21 @@ module.exports = class CloudantTransport extends Transport {
         if (!opts.url && !(opts.username && opts.password && opts.host))
             return console.log('Insufficient database credentials provided');
 
-        this.goOn = true;
+        this.goOn = false;
 
         // Instantiate using url OR username/password/host
         this.cloudant = Cloudant({
             url: opts.url || 'https://' + opts.username + ':' + opts.password + '@' + opts.host,
-            plugins: { iamauth: { iamApiKey: opts.iamApiKey || ''} }
+            plugins: { iamauth: { iamApiKey: opts.iamApiKey || '' } }
         });
 
         // Default database name if none provided
-        opts.db = opts.db || 'winston-cloudant';
+        this.dbName = opts.db || 'winston-cloudant';
 
         // Create database to be sure it exists
-        this.cloudant.db.create(opts.db);
+        // this.cloudant.db.create(opts.db)
+        // .then(err => console.log('db skapades'))
+        // .catch(err => console.log('db finns redan'));
 
         this.db = this.cloudant.use(opts.db);
 
@@ -32,13 +34,15 @@ module.exports = class CloudantTransport extends Transport {
         this.logstash = !!opts.logstash;
     }
 
-    log(info, callback) {
+    async log(info, callback) {
         setImmediate(() => {
             this.emit('logged', info);
         });
 
-        if(!this.goOn)
-            return;
+        if (!this.goOn) {
+            await this.cloudant.db.create(this.dbName).catch(err => { });
+            this.goOn = true;
+        }
 
         var meta = {};
 
@@ -66,7 +70,7 @@ module.exports = class CloudantTransport extends Transport {
         }, function (err, data) {
 
             if (err)
-                console.log(err + "");
+                console.log("FEL: " + err + "");
 
             callback();
         });

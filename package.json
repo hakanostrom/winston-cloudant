@@ -21,10 +21,10 @@
     "bluemix"
   ],
   "dependencies": {
-    "@cloudant/cloudant": "^2.4.1",
-    "winston-transport": "^4.2.0"
+    "@cloudant/cloudant": "^4.1.1",
+    "winston-transport": "^4.3.0"
   },
   "devDependencies": {
-    "winston": "^3.1.0"
+    "winston": "^3.2.1"
   }
 }
