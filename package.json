@@ -1,6 +1,6 @@
 {
   "name": "winston-cloudant",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "A simple Winston transport for IBM Cloudant NoSQL Db",
   "main": "winston-cloudant.js",
   "scripts": {
