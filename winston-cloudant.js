@@ -30,8 +30,11 @@ module.exports = class CloudantTransport extends Transport {
 
         this.db = this.cloudant.use(opts.db);
 
-        // Formatting for Logstash (force to be true/false)
-        this.logstash = !!opts.logstash;
+        // Formatting for Logstash
+        this.logstash = true;
+        if (opts.logstash == false || opts.logstash == 'false')
+            this.logstash = false;
+            
     }
 
     async log(info, callback) {
