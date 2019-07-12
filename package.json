@@ -22,7 +22,8 @@
   ],
   "dependencies": {
     "@cloudant/cloudant": "^4.1.1",
-    "winston-transport": "^4.3.0"
+    "winston-transport": "^4.3.0",
+    "lodash": "^4.17.14"
   },
   "devDependencies": {
     "winston": "^3.2.1"
